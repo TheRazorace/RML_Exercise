@@ -1,6 +1,8 @@
 from rdflib import Graph, Namespace, Literal, BNode
 from rdflib.namespace import NamespaceManager, RDF
 import pandas as pd
+import sys
+import os
 
 #Function that saves all triples in a Dataframe for easy visualization
 def save_triples(g):
@@ -95,11 +97,15 @@ if __name__ == '__main__':
     
     print("Enter the RML-star file you want to transform (for instance 'file.ttl'): ")
     filename = input()
+    if not os.path.isfile(filename):
+        sys.exit("No such file found in your directory! Please try again!")
     
     #Test case loaded in "g", new graph in "new_g"
     g = Graph()
     new_g = Graph()
     g.parse(filename) 
+
+        
     
     # df = save_triples(g)
     # print(df)
@@ -181,6 +187,6 @@ if __name__ == '__main__':
                 
     #New graph serialization
     new_g.serialize("new_graph.ttl", format = "ttl")
-    print("Generated graph created succesfully and saved as 'new.ttl'!")
+    print("Graph generated succesfully and saved as 'new.ttl'!")
 
   
