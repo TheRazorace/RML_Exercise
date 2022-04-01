@@ -93,10 +93,13 @@ def add_relationships(g, node, rr, rml, rdf, pred, obj):
 #Main function
 if __name__ == '__main__': 
     
+    print("Enter the RML-star file you want to transform (for instance 'file.ttl'): ")
+    filename = input()
+    
     #Test case loaded in "g", new graph in "new_g"
     g = Graph()
     new_g = Graph()
-    g.parse("tc1.txt") 
+    g.parse(filename) 
     
     # df = save_triples(g)
     # print(df)
@@ -177,6 +180,7 @@ if __name__ == '__main__':
                     
                 
     #New graph serialization
-    print(new_g.serialize(format = "ttl"))
+    new_g.serialize("new_graph.ttl", format = "ttl")
+    print("Generated graph created succesfully and saved as 'new.ttl'!")
 
   
