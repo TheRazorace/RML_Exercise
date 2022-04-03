@@ -52,7 +52,10 @@ def add_rdfSubject_map(g, node, rr, rml, rdf, pred_list, obj_list):
     bnode2 = BNode()
     g.add((bnode, rml.objectMap, bnode2))
     for i in range (len(pred_list)):
-        g.add((bnode2, pred_list[i], obj_list[i]))
+        if(pred_list[i] == rml.quotedTriplesMap):
+            g.add((bnode2, rr.parentTriplesMap, obj_list[i]))
+        else:
+            g.add((bnode2, pred_list[i], obj_list[i]))
     #g.add((bnode2, rr.termType, rr.BlankNode))
     
     return g
@@ -78,7 +81,10 @@ def add_rdfObject_map(g, node, rr, rml, rdf, pred_list, obj_list):
     bnode2 = BNode()
     g.add((bnode, rml.objectMap, bnode2))
     for i in range (len(pred_list)):
-        g.add((bnode2, pred_list[i], obj_list[i]))
+        if(pred_list[i] == rml.quotedTriplesMap):
+            g.add((bnode2, rr.parentTriplesMap, obj_list[i]))
+        else:
+            g.add((bnode2, pred_list[i], obj_list[i]))
     
     return g
 
