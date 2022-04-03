@@ -1,0 +1,35 @@
+@prefix : <http://example.org/> .
+@prefix ex: <http://example/> .
+@prefix ql: <http://semweb.mmlab.be/ns/ql#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rml: <http://semweb.mmlab.be/ns/rml#> .
+@prefix rr: <http://www.w3.org/ns/r2rml#> .
+
+:secondTM a rml:TriplesMap ;
+    rml:logicalSource [ rml:referenceFormulation ql:CSV ;
+            rml:source "data.csv" ] ;
+    rml:subjectMap [ rml:reference "Variable2" ;
+            rr:termType rr:BlankNode ] ;
+    rr:predicateObjectMap [ rml:objectMap [ rml:quotedTriplesMap :firstTM ] ;
+            rr:predicate rdf:subject ],
+        [ rml:objectMap [ rr:constant ex:q ] ;
+            rr:predicate rdf:predicate ],
+        [ rml:objectMap [ rml:reference rdf:Statement ] ;
+            rr:predicate rdf:type ],
+        [ rml:objectMap [ rr:template "http://example/{c3}" ] ;
+            rr:predicate rdf:object ] .
+
+:firstTM a rml:TriplesMap ;
+    rml:logicalSource [ rml:referenceFormulation ql:CSV ;
+            rml:source "data.csv" ] ;
+    rml:subjectMap [ rml:reference "Variable1" ;
+            rr:termType rr:BlankNode ] ;
+    rr:predicateObjectMap [ rml:objectMap [ rr:constant ex:p ] ;
+            rr:predicate rdf:predicate ],
+        [ rml:objectMap [ rml:reference rdf:Statement ] ;
+            rr:predicate rdf:type ],
+        [ rml:objectMap [ rr:template "http://example/{c2}" ] ;
+            rr:predicate rdf:object ],
+        [ rml:objectMap [ rr:template "http://example/{c1}" ] ;
+            rr:predicate rdf:subject ] .
+

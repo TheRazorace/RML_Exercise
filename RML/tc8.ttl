@@ -1,0 +1,93 @@
+@prefix : <http://example.org/> .
+@prefix ex: <http://example/> .
+@prefix ql: <http://semweb.mmlab.be/ns/ql#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rml: <http://semweb.mmlab.be/ns/rml#> .
+@prefix rr: <http://www.w3.org/ns/r2rml#> .
+
+:firstJoinTM a rml:TriplesMap ;
+    rml:logicalSource [ rml:referenceFormulation ql:CSV ;
+            rml:source "data.csv" ] ;
+    rml:subjectMap [ rml:reference "Variable2" ;
+            rr:termType rr:BlankNode ] ;
+    rr:predicateObjectMap [ rml:objectMap [ rml:reference rdf:Statement ] ;
+            rr:predicate rdf:type ],
+        [ rml:objectMap [ rml:quotedTriplesMap :elementaryTM1 ] ;
+            rr:predicate rdf:subject ],
+        [ rml:objectMap [ rml:quotedTriplesMap :secondJoinTM ] ;
+            rr:predicate ex:q2 ],
+        [ rml:objectMap [ rml:quotedTriplesMap :elementaryTM2 ] ;
+            rr:predicate rdf:object ],
+        [ rml:objectMap [ rr:constant ex:q1 ] ;
+            rr:predicate rdf:predicate ] .
+
+:elementaryTM1 a rml:TriplesMap ;
+    rml:logicalSource [ rml:referenceFormulation ql:CSV ;
+            rml:source "data.csv" ] ;
+    rml:subjectMap [ rml:reference "Variable1" ;
+            rr:termType rr:BlankNode ] ;
+    rr:predicateObjectMap [ rml:objectMap [ rml:reference rdf:Statement ] ;
+            rr:predicate rdf:type ],
+        [ rml:objectMap [ rr:template "http://example/{c2}" ] ;
+            rr:predicate rdf:object ],
+        [ rml:objectMap [ rr:constant ex:p1 ] ;
+            rr:predicate rdf:predicate ],
+        [ rml:objectMap [ rr:template "http://example/{c1}" ] ;
+            rr:predicate rdf:subject ] .
+
+:elementaryTM2 a rml:TriplesMap ;
+    rml:logicalSource [ rml:referenceFormulation ql:CSV ;
+            rml:source "data.csv" ] ;
+    rml:subjectMap [ rml:reference "Variable3" ;
+            rr:termType rr:BlankNode ] ;
+    rr:predicateObjectMap [ rml:objectMap [ rml:reference rdf:Statement ] ;
+            rr:predicate rdf:type ],
+        [ rml:objectMap [ rr:constant ex:p2 ] ;
+            rr:predicate rdf:predicate ],
+        [ rml:objectMap [ rr:template "http://example/{c3}" ] ;
+            rr:predicate rdf:subject ],
+        [ rml:objectMap [ rr:template "http://example/{c4}" ] ;
+            rr:predicate rdf:object ] .
+
+:elementaryTM3 a rml:TriplesMap ;
+    rml:logicalSource [ rml:referenceFormulation ql:CSV ;
+            rml:source "data.csv" ] ;
+    rml:subjectMap [ rml:reference "Variable4" ;
+            rr:termType rr:BlankNode ] ;
+    rr:predicateObjectMap [ rml:objectMap [ rr:template "http://example/{c5}" ] ;
+            rr:predicate rdf:subject ],
+        [ rml:objectMap [ rr:constant ex:p3 ] ;
+            rr:predicate rdf:predicate ],
+        [ rml:objectMap [ rml:reference rdf:Statement ] ;
+            rr:predicate rdf:type ],
+        [ rml:objectMap [ rr:template "http://example/{c6}" ] ;
+            rr:predicate rdf:object ] .
+
+:elementaryTM4 a rml:TriplesMap ;
+    rml:logicalSource [ rml:referenceFormulation ql:CSV ;
+            rml:source "data.csv" ] ;
+    rml:subjectMap [ rml:reference "Variable6" ;
+            rr:termType rr:BlankNode ] ;
+    rr:predicateObjectMap [ rml:objectMap [ rml:reference rdf:Statement ] ;
+            rr:predicate rdf:type ],
+        [ rml:objectMap [ rr:template "http://example/{c7}" ] ;
+            rr:predicate rdf:subject ],
+        [ rml:objectMap [ rr:constant ex:p4 ] ;
+            rr:predicate rdf:predicate ],
+        [ rml:objectMap [ rr:template "http://example/{c8}" ] ;
+            rr:predicate rdf:object ] .
+
+:secondJoinTM a rml:TriplesMap ;
+    rml:logicalSource [ rml:referenceFormulation ql:CSV ;
+            rml:source "data.csv" ] ;
+    rml:subjectMap [ rml:reference "Variable5" ;
+            rr:termType rr:BlankNode ] ;
+    rr:predicateObjectMap [ rml:objectMap [ rml:reference rdf:Statement ] ;
+            rr:predicate rdf:type ],
+        [ rml:objectMap [ rml:quotedTriplesMap :elementaryTM3 ] ;
+            rr:predicate rdf:subject ],
+        [ rml:objectMap [ rr:constant ex:q3 ] ;
+            rr:predicate rdf:predicate ],
+        [ rml:objectMap [ rml:quotedTriplesMap :elementaryTM4 ] ;
+            rr:predicate rdf:object ] .
+
