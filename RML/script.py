@@ -97,7 +97,10 @@ def add_relationships(g, node, rr, rml, rdf, pred_list, obj_list, pred_obj):
     bnode2 = BNode()
     g.add((bnode, rml.objectMap, bnode2))
     for i in range (len(pred_list)):
-        g.add((bnode2, pred_list[i], obj_list[i]))
+        if(pred_list[i] == rml.quotedTriplesMap):
+            g.add((bnode2, rr.parentTriplesMap, obj_list[i]))
+        else:
+            g.add((bnode2, pred_list[i], obj_list[i]))
     
     return g
 
