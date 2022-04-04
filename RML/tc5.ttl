@@ -10,26 +10,32 @@
             rml:source "data.csv" ] ;
     rml:subjectMap [ rml:reference "Variable2" ;
             rr:termType rr:BlankNode ] ;
-    rr:predicateObjectMap [ rml:objectMap [ rml:quotedTriplesMap :firstTM ] ;
-            rr:predicate rdf:subject ],
-        [ rml:objectMap [ rr:constant ex:q ] ;
-            rr:predicate rdf:predicate ],
-        [ rml:objectMap [ rml:reference rdf:Statement ] ;
-            rr:predicate rdf:type ],
+    rr:predicateObjectMap [ rml:objectMap [ rml:reference rdf:Statement ] ;
+            rr:predicate rdf:type ];
+    rr:predicateObjectMap
+        [ rml:objectMap [ rr:parentTriplesMap :firstTM ] ;
+            rr:predicate rdf:subject ];
+    rr:predicateObjectMap
         [ rml:objectMap [ rr:template "http://example/{c3}" ] ;
-            rr:predicate rdf:object ] .
+            rr:predicate rdf:object ];
+    rr:predicateObjectMap
+        [ rml:objectMap [ rr:constant ex:q ] ;
+            rr:predicate rdf:predicate ] .
 
 :firstTM a rml:TriplesMap ;
     rml:logicalSource [ rml:referenceFormulation ql:CSV ;
             rml:source "data.csv" ] ;
     rml:subjectMap [ rml:reference "Variable1" ;
             rr:termType rr:BlankNode ] ;
-    rr:predicateObjectMap [ rml:objectMap [ rr:constant ex:p ] ;
-            rr:predicate rdf:predicate ],
-        [ rml:objectMap [ rml:reference rdf:Statement ] ;
-            rr:predicate rdf:type ],
-        [ rml:objectMap [ rr:template "http://example/{c2}" ] ;
-            rr:predicate rdf:object ],
+    rr:predicateObjectMap [ rml:objectMap [ rr:template "http://example/{c2}" ] ;
+            rr:predicate rdf:object ];
+    rr:predicateObjectMap
         [ rml:objectMap [ rr:template "http://example/{c1}" ] ;
-            rr:predicate rdf:subject ] .
+            rr:predicate rdf:subject ];
+    rr:predicateObjectMap
+        [ rml:objectMap [ rr:constant ex:p ] ;
+            rr:predicate rdf:predicate ];
+    rr:predicateObjectMap
+        [ rml:objectMap [ rml:reference rdf:Statement ] ;
+            rr:predicate rdf:type ] .
 

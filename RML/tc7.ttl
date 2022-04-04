@@ -10,14 +10,18 @@
             rml:source "data.csv" ] ;
     rml:subjectMap [ rml:reference "Variable1" ;
             rr:termType rr:BlankNode ] ;
-    rr:predicateObjectMap [ rml:objectMap [ rr:template "http://example/{c2}" ] ;
-            rr:predicate rdf:object ],
-        [ rml:objectMap [ rml:quotedTriplesMap :thirdTM ] ;
-            rr:predicate ex:q ],
-        [ rml:objectMap [ rr:constant ex:p1 ] ;
-            rr:predicate rdf:predicate ],
+    rr:predicateObjectMap [ rml:objectMap [ rr:constant ex:p1 ] ;
+            rr:predicate rdf:predicate ];
+    rr:predicateObjectMap
         [ rml:objectMap [ rr:template "http://example/{c1}" ] ;
-            rr:predicate rdf:subject ],
+            rr:predicate rdf:subject ];
+    rr:predicateObjectMap
+        [ rml:objectMap [ rr:parentTriplesMap :thirdTM ] ;
+            rr:predicate ex:q ];
+    rr:predicateObjectMap
+        [ rml:objectMap [ rr:template "http://example/{c2}" ] ;
+            rr:predicate rdf:object ];
+    rr:predicateObjectMap
         [ rml:objectMap [ rml:reference rdf:Statement ] ;
             rr:predicate rdf:type ] .
 
@@ -27,11 +31,14 @@
     rml:subjectMap [ rml:reference "Variable2" ;
             rr:termType rr:BlankNode ] ;
     rr:predicateObjectMap [ rml:objectMap [ rr:constant ex:p2 ] ;
-            rr:predicate rdf:predicate ],
+            rr:predicate rdf:predicate ];
+    rr:predicateObjectMap
         [ rml:objectMap [ rr:template "http://example/{c4}" ] ;
-            rr:predicate rdf:object ],
+            rr:predicate rdf:object ];
+    rr:predicateObjectMap
         [ rml:objectMap [ rml:reference rdf:Statement ] ;
-            rr:predicate rdf:type ],
+            rr:predicate rdf:type ];
+    rr:predicateObjectMap
         [ rml:objectMap [ rr:template "http://example/{c3}" ] ;
             rr:predicate rdf:subject ] .
 

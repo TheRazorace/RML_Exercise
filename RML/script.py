@@ -1,4 +1,4 @@
-from rdflib import Graph, Namespace, Literal, BNode
+from rdflib import Graph, Namespace, Literal, BNode, ConjunctiveGraph
 from rdflib.namespace import NamespaceManager, RDF
 import pandas as pd
 import sys
@@ -237,5 +237,14 @@ if __name__ == '__main__':
                     
                 
     #New graph serialization
-    new_g.serialize("new_graph.ttl", format = "ttl")
+    new_g.serialize("new_graph.ttl", format = "turtle")
+    
+    file = open("new_graph.ttl", mode="r")
+    content = file.read()
+    file.close()
+    content = content.replace(',', ';\n    rr:predicateObjectMap')
+    
+    file = open("new_graph.ttl", "w")
+    file.write(content)
+    file.close()
     print("Graph generated succesfully and saved as 'new_graph.ttl'!")

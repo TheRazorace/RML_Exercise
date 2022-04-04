@@ -13,13 +13,17 @@
             rr:termType rr:BlankNode ] ;
     rr:predicateObjectMap [ rml:objectMap [ rml:reference "c3" ;
                     rr:datatype xsd:integer ] ;
-            rr:predicate ex:q ],
-        [ rml:objectMap [ rml:reference rdf:Statement ] ;
-            rr:predicate rdf:type ],
+            rr:predicate ex:q ];
+    rr:predicateObjectMap
         [ rml:objectMap [ rr:constant ex:p ] ;
-            rr:predicate rdf:predicate ],
+            rr:predicate rdf:predicate ];
+    rr:predicateObjectMap
+        [ rml:objectMap [ rml:reference rdf:Statement ] ;
+            rr:predicate rdf:type ];
+    rr:predicateObjectMap
         [ rml:objectMap [ rr:template "http://example/{c1}" ] ;
-            rr:predicate rdf:subject ],
+            rr:predicate rdf:subject ];
+    rr:predicateObjectMap
         [ rml:objectMap [ rml:reference "c2" ;
                     rr:termType rr:BlankNode ] ;
             rr:predicate rdf:object ] .
